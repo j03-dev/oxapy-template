@@ -1,5 +1,8 @@
 from sqlalchemy.orm import Session
+
 from app.models import User
+from app.serializers.user_serializer import UpdateUserSerializer
+
 import typing
 
 

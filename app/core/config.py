@@ -16,7 +16,7 @@ TURSO_DB_URL = os.getenv("TURSO_DB_URL")
 TURSO_DB_AUTH_TOKEN = os.getenv("TURSO_DB_AUTH_TOKEN")
 
 ENGINE = create_engine(
-    DATABASE_URL, #type: ignore
+    DATABASE_URL,  # type: ignore
     connect_args={
         "sync_url": TURSO_DB_URL,
         "auth_token": TURSO_DB_AUTH_TOKEN,
@@ -27,4 +27,4 @@ DB = sessionmaker(bind=ENGINE)
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-JWT = jwt.Jwt(SECRET_KEY) #type: ignore
+JWT = jwt.Jwt(SECRET_KEY)  # type: ignore

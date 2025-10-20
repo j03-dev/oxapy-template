@@ -4,9 +4,11 @@ from sqlalchemy.orm import Session
 from app.core.utils import new_id
 from app.models import User
 
+
 class Crendential(serializer.Serializer):
     email = serializer.EmailField()
     password = serializer.CharField(min_length=8)
+
 
 class UserSerializer(serializer.Serializer):
     id = serializer.CharField(write_only=True, required=False)
@@ -21,3 +23,8 @@ class UserSerializer(serializer.Serializer):
 
     class Meta:
         models = User
+
+
+class UpdateUserSerializer(serializer.Serializer):
+    name = serializer.CharField()
+    email = serializer.EmailField()

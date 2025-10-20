@@ -11,7 +11,6 @@ import typing
 
 def login(db: Session, crendential: Crendential) -> str:
     data = crendential.validated_data
-    assert data, "Invalid crendential data"
     if user := get_user_by_email(db, data["email"]):
         if user.password == data["password"]:
             claims = {"sub": user.id}
@@ -22,7 +21,6 @@ def login(db: Session, crendential: Crendential) -> str:
 
 def register(db: Session, new_user: UserSerializer) -> typing.Optional[User]:
     data = new_user.validated_data
-    assert data, "Invalid user data"
     if get_user_by_email(db, data["email"]):
         raise exceptions.ConflictError("Email already registered")
     return new_user.save(db)

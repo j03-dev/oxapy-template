@@ -12,7 +12,7 @@ router.middleware(db_session_middleware)
 def login(request: Request):
     crendential = Crendential(data=request.data)
     crendential.is_valid()
-    token = auth_srvs.login(request.db, crendential)  # type: ignore
+    token = auth_srvs.login(request.db, crendential)
     return {"token": token}, Status.ACCEPTED
 
 
@@ -20,6 +20,6 @@ def login(request: Request):
 def register(request: Request):
     new_user = UserSerializer(data=request.data)
     new_user.is_valid()
-    user = auth_srvs.register(request.db, new_user)  # type: ignore
+    user = auth_srvs.register(request.db, new_user)
     user_serializer = UserSerializer(instance=user)
     return {"users": user_serializer.data}, Status.CREATED
