@@ -1,4 +1,4 @@
-from oxapy import Request, Status, jwt  # type: ignore
+from oxapy import Request, Status, jwt
 
 from app.core.config import JWT, DB
 from app.repositories import user_repo
